@@ -4,7 +4,7 @@
 (function () {
   var page = location.pathname.split('/').pop() || 'index.html';
   var isHome = (page === 'index.html' || page === '');
-  var onWork = page.indexOf('case-') === 0 || page === 'pineapple.html' || isHome;
+  var onWork = page.indexOf('case-') === 0 || isHome;
 
   // ---- Masthead: one running header on every page ----
   var mast = document.createElement('header');
@@ -40,16 +40,6 @@
     if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
   }, { passive: true });
 
-  // ---- Footer colophon ----
-  (function () {
-    var f = document.querySelector('.site-footer');
-    if (!f || f.querySelector('.footer-credit')) return;
-    var host = f.querySelector('.site-footer-inner') || f;
-    var c = document.createElement('p');
-    c.className = 'footer-credit';
-    c.textContent = 'Hey guess what, I designed and launched this website by myself.';
-    host.appendChild(c);
-  })();
 
   var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -61,7 +51,7 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.04 });
     var revealables = document.querySelectorAll(
-      '.case-row, .wall figure, .results .stat, .carousel, .curveball, .extra-block, .pr-block, .paper, .case-headline, .impl-sub, .card, .numbers .num, .feature-shot, .megastat, .quiet-line, .pop-callout, .result-teaser, .cs-item, .data-card, .threewords, .about-closer, .cover-photo'
+      '.case-row, .wall figure, .results .stat, .carousel, .curveball, .extra-block, .paper, .case-headline, .impl-sub, .card, .feature-shot, .megastat, .quiet-line, .pop-callout, .result-teaser, .cs-item, .data-card, .about-closer, .cover-photo'
     );
     revealables.forEach(function (el) {
       if (el.closest('.carousel-track')) return;
@@ -216,7 +206,7 @@
         requestAnimationFrame(frame);
       });
     }, { threshold: 0.6 });
-    document.querySelectorAll('.results .stat b, .numbers .num b, .megastat b').forEach(function (b) {
+    document.querySelectorAll('.results .stat b, .megastat b').forEach(function (b) {
       statIO.observe(b);
     });
   }
