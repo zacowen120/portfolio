@@ -609,12 +609,7 @@ h1, h2, h3, p { overflow-wrap: break-word; }
   margin: clamp(40px, 6vw, 72px) 0 clamp(36px, 5vw, 56px);
   font-family: var(--serif); font-weight: 400;
   font-size: clamp(20px, 1.9vw, 30px); line-height: 1.32; letter-spacing: -.01em;
-  text-align: left; color: var(--ink); max-width: 32ch;
-}
-.result-teaser::before {
-  content: "The payoff"; display: block;
-  font-family: var(--mono); font-size: var(--fs-micro); letter-spacing: .2em; text-transform: uppercase;
-  color: var(--accent-deep); margin-bottom: 14px;
+  text-align: left; color: var(--ink); max-width: 46ch;
 }
 .result-teaser b { font-family: var(--serif); font-style: italic; color: var(--accent); font-weight: 500; }
 
