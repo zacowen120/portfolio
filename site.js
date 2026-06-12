@@ -151,7 +151,7 @@
         track.appendChild(clone);
       });
       var firstClone = track.children[originals.length];
-      var loopW = 0, speed = 0.5;
+      var loopW = 0, speed = 0.9;
       function measure() { if (firstClone) loopW = firstClone.offsetLeft; placeArrows(); }
       measure();
       window.addEventListener('load', measure);

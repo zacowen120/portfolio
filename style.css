@@ -202,6 +202,7 @@ h1, h2, h3, p { overflow-wrap: break-word; }
 .cover-text { min-width: 0; }
 @media (max-width: 820px) {
   .cover { grid-template-columns: 1fr; gap: clamp(22px, 5vw, 36px); }
+  .cover h1 { font-size: clamp(44px, 12vw, 64px); line-height: .95; }
 }
 .cover-eyebrow {
   display: flex; align-items: center; gap: 16px;
@@ -343,6 +344,7 @@ h1, h2, h3, p { overflow-wrap: break-word; }
   .card:hover .card-img { transform: scale(1.045); filter: saturate(1.04); }
   .card:hover .card-name { color: var(--accent-deep); }
   .card:hover .card-go .ar { transform: translateX(6px); }
+  .card.theme-trust:hover .card-img { transform: scale(1.225); transform-origin: center 38%; }
 }
 .card.dark-band .card-band { color: inherit; }
 .card.dark-band .card-tags span { border-color: var(--line-2); color: var(--ink-2); }
@@ -373,7 +375,7 @@ h1, h2, h3, p { overflow-wrap: break-word; }
   background: radial-gradient(125% 120% at 50% -10%, var(--paper-2), var(--paper) 62%);
   border-top: 3px solid var(--accent);
 }
-.tile-wall.pr-press .tw-fool { width: clamp(150px, 56%, 250px); height: auto; }
+.tile-wall.pr-press .tw-fool { width: clamp(160px, 66%, 290px); height: auto; }
 .tile-wall.pr-press .tw-as { font-family: var(--mono); font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink-3); }
 .tile-wall.pr-press .tw-logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 13px 22px; max-width: 92%; }
 .tile-wall.pr-press .tw-logos .tw-logo { height: clamp(19px, 2.3vw, 27px); width: auto; max-width: 120px; object-fit: contain; opacity: .95; }
@@ -417,7 +419,7 @@ h1, h2, h3, p { overflow-wrap: break-word; }
 }
 .extras-bridge .eb-btn {
   font-family: var(--mono); font-weight: 400; font-size: 13px; text-transform: uppercase; letter-spacing: .16em;
-  display: inline-flex; align-items: center; gap: 10px; color: var(--ink); white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 10px; color: var(--accent); white-space: nowrap;
 }
 .extras-bridge .eb-btn .ar { transition: transform .3s var(--ease); }
 .extras-bridge:hover .eb-btn .ar { transform: translateX(6px); }
