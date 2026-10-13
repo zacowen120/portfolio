@@ -4,38 +4,226 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zac Owen, Portfolio</title>
-<meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23131009%22/><text x=%2250%22 y=%2274%22 font-family=%22Georgia,'Newsreader',serif%22 font-size=%2270%22 font-weight=%22600%22 fill=%22%23f1e9db%22 text-anchor=%22middle%22>Z</text></svg>">
+<meta name="author" content="Zac Owen">
+<meta name="description" content="Zac Owen finds what makes things special, and tells people about it. Selected branding and marketing work.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zac Owen, Portfolio">
+<meta property="og:description" content="Zac Owen finds what makes things special, and tells people about it. Selected branding and marketing work.">
+<meta property="og:url" content="https://zacowen.com/">
+<meta property="og:image" content="https://zacowen.com/media/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zac Owen, Portfolio">
+<meta name="twitter:description" content="Zac Owen finds what makes things special, and tells people about it. Selected branding and marketing work.">
+<meta name="twitter:image" content="https://zacowen.com/media/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23131009%22/><text x=%2250%22 y=%2274%22 font-family=%22Georgia,'Newsreader',serif%22 font-size=%2270%22 font-weight=%22600%22 fill=%22%23f1e9db%22 text-anchor=%22middle%22>Z</text></svg>">
 <style>
-  :root{--bg:#131009;--cream:#f1e9db;--muted:#9a9082;--accent:#c9a25e;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--bg);color:var(--cream);font-family:'Hanken Grotesk',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;padding:clamp(1.5rem,5vw,3.5rem);-webkit-font-smoothing:antialiased;}
-  .top{display:flex;align-items:center;gap:.6rem;font-family:'Newsreader',Georgia,serif;font-size:1.05rem;letter-spacing:.02em;}
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite;}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,162,94,.5);}70%{box-shadow:0 0 0 10px rgba(201,162,94,0);}100%{box-shadow:0 0 0 0 rgba(201,162,94,0);}}
-  .center{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:46rem;animation:rise 1.1s cubic-bezier(.2,.7,.2,1) both;}
-  h1{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(2.4rem,8vw,5rem);line-height:1.04;letter-spacing:-.01em;}
-  h1 em{font-style:italic;color:var(--accent);}
-  .sub{margin-top:1.6rem;color:var(--muted);font-size:clamp(1rem,2.2vw,1.2rem);line-height:1.55;max-width:34rem;}
-  .foot{display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;margin-top:2.5rem;font-size:.98rem;}
-  a{color:var(--cream);text-decoration:none;border-bottom:1px solid rgba(241,233,219,.3);padding-bottom:2px;transition:border-color .25s,color .25s;}
-  a:hover{color:var(--accent);border-color:var(--accent);}
-  .sep{color:rgba(241,233,219,.25);}
-  @keyframes rise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
-  @media(prefers-reduced-motion:reduce){.center{animation:none;}.dot{animation:none;}}
+  html { scroll-snap-type: y proximity; scroll-behavior: smooth; }
+  body { margin: 0; background: #131009; }
+  ::selection { background: #e0703f; color: #131009; }
+  @keyframes mqL { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .mq { overflow: hidden; }
+  .mq-row { display: inline-flex; align-items: center; white-space: nowrap; animation: mqL 36s linear infinite; }
+  .mlogo { height: clamp(16px,1.7vw,23px); margin: 0 clamp(20px,2.6vw,42px); object-fit: contain; filter: brightness(0) invert(1); opacity: .8; }
+  .mdot { color: #e0703f; opacity: .6; font-size: clamp(13px,1.3vw,18px); }
+
+  /* hover affordances: replaces the prototype's style-hover attributes.
+     Scoped to .pcover so the marquee logos inside the PR tile aren't scaled. */
+  .ptile .pcover { will-change: transform; }
+  .ptile:hover .pcover { transform: scale(1.045); }
+  .resume-btn { transition: background .2s ease; }
+  .resume-btn:hover { background: #e0703f; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; scroll-snap-type:none; }
+    .mq-row{ animation:none; }
+    .ptile:hover .pcover{ transform:none; }
+    .pcover{ transition:none; }
+  }
+
+  @media (max-width:768px){
+    [style*="grid-template-columns"]{grid-template-columns:1fr !important;}
+    [style*="repeat(9"]{grid-template-columns:repeat(3,1fr) !important;}
+    [style*="columns:2;"]{columns:1 !important;}
+    [style*="linear-gradient(180deg,#e9dfca"]{min-height:56vh !important;}
+    [style*="height:100vh"]{height:auto !important;min-height:100svh !important;}
+  }
 </style>
 </head>
 <body>
-  <div class="top"><span class="dot"></span>&nbsp;Zac Owen</div>
-  <main class="center">
-    <h1>Currently refining the <em>details</em>.</h1>
-    <p class="sub">My portfolio is being updated and will be ready for your viewing pleasure soon. Thanks for stopping by early.</p>
-    <div class="foot">
-      <a href="https://www.linkedin.com/in/zac-owen/" target="_blank" rel="noopener">LinkedIn</a>
+
+<div style="background:#131009;color:#f1e9db;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;">
+
+  <!-- HERO -->
+  <header style="position:relative;height:100vh;display:flex;flex-direction:column;scroll-snap-align:start;">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:clamp(20px,2.4vw,30px) clamp(24px,4vw,60px);border-bottom:1px solid rgba(241,233,219,.14);">
+      <span style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(19px,1.8vw,23px);letter-spacing:-.01em;">Zac&nbsp;Owen</span>
+      <span style="display:flex;align-items:center;gap:clamp(16px,2.4vw,32px);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;">
+        <a href="#work" style="color:#f1e9db;text-decoration:none;">Work</a>
+        <a href="extras.html" style="color:#9d9081;text-decoration:none;">Extras</a>
+        <a href="about.html" style="color:#9d9081;text-decoration:none;">About</a>
+      </span>
     </div>
-  </main>
+
+    <div style="flex:1;display:grid;grid-template-columns:1.08fr 0.92fr;">
+      <div style="position:relative;display:flex;flex-direction:column;padding:clamp(28px,3.4vw,52px) clamp(24px,3.6vw,60px);border-right:1px solid rgba(241,233,219,.14);">
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;max-width:none;">
+          <h1 style="font-family:'Newsreader',serif;font-weight:330;font-size:clamp(44px,6.6vw,104px);line-height:.95;letter-spacing:-.034em;margin:0;max-width:12ch;text-wrap:balance;">I find what makes things <em style="font-style:italic;font-weight:300;color:#e8915f;">special</em>, and I tell people about it.</h1>
+          <p style="font-family:'Newsreader',serif;font-size:clamp(17px,1.5vw,23px);line-height:1.45;color:#b6a890;margin:clamp(28px,3.4vw,40px) 0 0;max-width:40ch;">After nearly a decade of <span style="color:#f1e9db;">branding and marketing</span>, I put together a portfolio to showcase my favorite projects.</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px 22px;justify-content:space-between;align-items:center;border-top:1px solid rgba(241,233,219,.14);padding-top:clamp(18px,2.2vw,24px);">
+          <a href="#work" style="display:inline-flex;align-items:baseline;gap:14px;text-decoration:none;color:#f1e9db;white-space:nowrap;">
+            <span style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.01em;border-bottom:1px solid rgba(241,233,219,.32);padding-bottom:6px;">See my work</span>
+            <span style="font-size:18px;color:#e0703f;">&darr;</span>
+          </a>
+        </div>
+      </div>
+      <div style="position:relative;overflow:hidden;background:linear-gradient(180deg,#e9dfca 0%,#ddd2b9 100%);">
+        <img fetchpriority="high" src="https://zacowen.com/assets/zac-hero-cutout.png" alt="Zac Owen" style="position:absolute;left:52%;bottom:0;transform:translateX(-50%);height:96%;max-width:none;display:block;">
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== GALLERY ===== -->
+
+  <!-- 01 Kindred -->
+  <a id="work" href="case-kindred.html" class="ptile" style="position:relative;display:block;height:100vh;overflow:hidden;text-decoration:none;color:inherit;scroll-snap-align:start;border-top:1px solid rgba(241,233,219,.1);">
+    <img class="pcover" src="assets/kindred/bar.jpg" alt="The Kindred Table bar and lounge" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;transition:transform 1.1s cubic-bezier(.16,1,.3,1);">
+    <span style="position:absolute;inset:0;background:linear-gradient(to top, rgba(19,16,9,.92) 0%, rgba(19,16,9,.2) 50%, rgba(19,16,9,.05) 100%);pointer-events:none;"></span>
+    <span style="position:absolute;top:clamp(18px,2.6vw,32px);right:clamp(22px,4vw,52px);font-family:'Newsreader',serif;font-size:clamp(44px,7vw,104px);font-weight:300;color:rgba(244,236,222,.16);line-height:1;pointer-events:none;">01</span>
+    <span style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(28px,4vw,52px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;pointer-events:none;">
+      <span style="max-width:34ch;">
+        <span style="display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#e8915f;margin-bottom:clamp(12px,1.6vw,18px);">Branding / Naming / Launch</span>
+        <span style="display:block;font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:clamp(32px,4.6vw,62px);line-height:1.0;letter-spacing:-.012em;color:#f6efe2;">Kindred Table</span>
+        <span style="display:block;font-size:clamp(14px,1.3vw,17px);line-height:1.45;color:#cdbfa9;margin-top:clamp(10px,1.4vw,15px);">A restaurant named, branded, and launched from scratch</span>
+      </span>
+      <span style="font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f4ecde;white-space:nowrap;border-bottom:1.5px solid #e0703f;padding-bottom:6px;">Read the story &rarr;</span>
+    </span>
+  </a>
+
+  <!-- 02 Trust -->
+  <a href="case-trust.html" class="ptile" style="position:relative;display:block;height:100vh;overflow:hidden;text-decoration:none;color:inherit;scroll-snap-align:start;border-top:1px solid rgba(241,233,219,.1);">
+    <img class="pcover" loading="lazy" decoding="async" src="https://zacowen.com/assets/tmf-office.jpg" alt="The Motley Fool headquarters" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 36%;transition:transform 1.1s cubic-bezier(.16,1,.3,1);">
+    <span style="position:absolute;inset:0;background:linear-gradient(to top, rgba(19,16,9,.9) 0%, rgba(19,16,9,.16) 48%, rgba(19,16,9,.04) 100%);pointer-events:none;"></span>
+    <span style="position:absolute;top:clamp(18px,2.6vw,32px);right:clamp(22px,4vw,52px);font-family:'Newsreader',serif;font-size:clamp(44px,7vw,104px);font-weight:300;color:rgba(244,236,222,.16);line-height:1;pointer-events:none;">02</span>
+    <span style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(28px,4vw,52px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;pointer-events:none;">
+      <span style="max-width:560px;">
+        <span style="display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#e8915f;margin-bottom:clamp(12px,1.6vw,18px);">Research / Brand Strategy / Comms</span>
+        <span style="display:block;font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:clamp(30px,4.4vw,58px);line-height:1.02;letter-spacing:-.014em;color:#f6efe2;">Building Trust at<br>The Motley Fool</span>
+        <span style="display:block;font-size:clamp(14px,1.3vw,17px);line-height:1.45;color:#cdbfa9;margin-top:clamp(10px,1.4vw,15px);">A 2-year research project that moved the number nobody could</span>
+      </span>
+      <span style="font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f4ecde;white-space:nowrap;border-bottom:1.5px solid #e0703f;padding-bottom:6px;">Read the story &rarr;</span>
+    </span>
+  </a>
+
+  <!-- 03 PR (Motley Fool office, graded) -->
+  <a href="case-pr.html" class="ptile" style="position:relative;display:block;height:100vh;overflow:hidden;text-decoration:none;color:inherit;scroll-snap-align:start;border-top:1px solid rgba(241,233,219,.1);">
+    <img class="pcover" loading="lazy" decoding="async" src="assets/pr-tmf/booths.jpg" alt="The Motley Fool office" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;transition:transform 1.1s cubic-bezier(.16,1,.3,1);">
+    <span style="position:absolute;inset:0;background:linear-gradient(to top, rgba(15,11,6,.94) 0%, rgba(15,11,6,.66) 30%, rgba(15,11,6,.3) 55%, rgba(15,11,6,.12) 100%);pointer-events:none;"></span>
+    <span style="position:absolute;inset:0;background:linear-gradient(to right, rgba(15,11,6,.72) 0%, rgba(15,11,6,.14) 50%, rgba(15,11,6,0) 76%);pointer-events:none;"></span>
+    <span style="position:absolute;top:clamp(18px,2.6vw,32px);right:clamp(22px,4vw,52px);font-family:'Newsreader',serif;font-size:clamp(44px,7vw,104px);font-weight:300;color:rgba(244,236,222,.18);line-height:1;pointer-events:none;">03</span>
+    <span style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(104px,15vh,164px);pointer-events:none;">
+      <span style="display:block;font-size:clamp(11px,1vw,13px);letter-spacing:.22em;text-transform:uppercase;color:#e8915f;font-weight:600;margin-bottom:clamp(16px,2vw,26px);">PR / Earned Media / Awards</span>
+      <span style="display:block;font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:clamp(33px,5.2vw,74px);line-height:.98;letter-spacing:-.018em;color:#f6efe2;max-width:16ch;text-wrap:balance;margin-bottom:clamp(20px,2.6vw,32px);">Public Relations for The Motley Fool</span>
+      <span style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;">
+        <span style="font-size:clamp(14px,1.3vw,17px);line-height:1.5;color:#cdbfa9;max-width:34ch;">100+ earned placements, from the New York Times to leading universities</span>
+        <span style="font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f4ecde;white-space:nowrap;border-bottom:1.5px solid #e0703f;padding-bottom:6px;">Read the story &rarr;</span>
+      </span>
+    </span>
+    <span class="mq" style="position:absolute;left:0;right:0;bottom:0;border-top:1px solid rgba(241,233,219,.22);border-bottom:1px solid rgba(241,233,219,.16);padding:clamp(15px,1.8vw,22px) 0;background:rgba(13,9,5,.5);pointer-events:none;">
+      <span class="mq-row">
+        <img class="mlogo" src="https://zacowen.com/assets/logos/nyt.png" alt="The New York Times"><span class="mdot">&middot;</span>
+        <img class="mlogo" src="https://zacowen.com/assets/logos/forbes.png" alt="Forbes"><span class="mdot">&middot;</span>
+        <img class="mlogo" src="https://zacowen.com/assets/logos/fortune.png" alt="Fortune"><span class="mdot">&middot;</span>
+        <img class="mlogo" src="https://zacowen.com/assets/logos/reuters.png" alt="Reuters"><span class="mdot">&middot;</span>
+        <img class="mlogo" src="https://zacowen.com/assets/logos/marketwatch.png" alt="MarketWatch"><span class="mdot">&middot;</span>
+        <img class="mlogo" src="https://zacowen.com/assets/logos/nyt.png" alt="The New York Times"><span class="mdot">&middot;</span>
+        <img class="mlogo" src="https://zacowen.com/assets/logos/forbes.png" alt="Forbes"><span class="mdot">&middot;</span>
+        <img class="mlogo" src="https://zacowen.com/assets/logos/fortune.png" alt="Fortune"><span class="mdot">&middot;</span>
+        <img class="mlogo" src="https://zacowen.com/assets/logos/reuters.png" alt="Reuters"><span class="mdot">&middot;</span>
+        <img class="mlogo" src="https://zacowen.com/assets/logos/marketwatch.png" alt="MarketWatch"><span class="mdot">&middot;</span>
+      </span>
+    </span>
+  </a>
+
+  <!-- 04 DJD -->
+  <a href="case-djd.html" class="ptile" style="position:relative;display:block;height:100vh;overflow:hidden;text-decoration:none;color:inherit;scroll-snap-align:start;border-top:1px solid rgba(241,233,219,.1);">
+    <img class="pcover" loading="lazy" decoding="async" src="assets/djd/exterior.jpg" alt="The de Jong Duke building at dusk" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;transition:transform 1.1s cubic-bezier(.16,1,.3,1);">
+    <span style="position:absolute;inset:0;background:linear-gradient(to top, rgba(19,16,9,.9) 0%, rgba(19,16,9,.16) 48%, rgba(19,16,9,.04) 100%);pointer-events:none;"></span>
+    <span style="position:absolute;top:clamp(18px,2.6vw,32px);right:clamp(22px,4vw,52px);font-family:'Newsreader',serif;font-size:clamp(44px,7vw,104px);font-weight:300;color:rgba(244,236,222,.16);line-height:1;pointer-events:none;">04</span>
+    <span style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(28px,4vw,52px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;pointer-events:none;">
+      <span style="max-width:34ch;">
+        <span style="display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#e8915f;margin-bottom:clamp(12px,1.6vw,18px);">Positioning / Ads / US Launch</span>
+        <span style="display:block;font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:clamp(32px,4.6vw,62px);line-height:1.0;letter-spacing:-.012em;color:#f6efe2;white-space:nowrap;">De Jong Duke</span>
+        <span style="display:block;font-size:clamp(14px,1.3vw,17px);line-height:1.45;color:#cdbfa9;margin-top:clamp(10px,1.4vw,15px);">Launching a 200-year-old Dutch coffee machine maker in the US</span>
+      </span>
+      <span style="font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f4ecde;white-space:nowrap;border-bottom:1.5px solid #e0703f;padding-bottom:6px;">Read the story &rarr;</span>
+    </span>
+  </a>
+
+  <!-- 05 DBI -->
+  <a href="case-dbi.html" class="ptile" style="position:relative;display:block;height:100vh;overflow:hidden;text-decoration:none;color:inherit;scroll-snap-align:start;border-top:1px solid rgba(241,233,219,.1);">
+    <img class="pcover" loading="lazy" decoding="async" src="assets/dbi/showroom.jpg" alt="A showroom branded for DBI Haworth" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;transition:transform 1.1s cubic-bezier(.16,1,.3,1);">
+    <span style="position:absolute;inset:0;background:linear-gradient(to top, rgba(19,16,9,.92) 0%, rgba(19,16,9,.5) 24%, rgba(19,16,9,.08) 56%, rgba(19,16,9,0) 100%);pointer-events:none;"></span>
+    <span style="position:absolute;top:clamp(18px,2.6vw,32px);right:clamp(22px,4vw,52px);font-family:'Newsreader',serif;font-size:clamp(44px,7vw,104px);font-weight:300;color:rgba(28,20,13,.22);line-height:1;pointer-events:none;">05</span>
+    <span style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(28px,4vw,52px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;pointer-events:none;">
+      <span style="max-width:34ch;">
+        <span style="display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#e8915f;margin-bottom:clamp(12px,1.6vw,18px);">Brand Refresh / Identity / Content</span>
+        <span style="display:block;font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:clamp(32px,4.6vw,62px);line-height:1.0;letter-spacing:-.012em;color:#f6efe2;">DBI</span>
+        <span style="display:block;font-size:clamp(14px,1.3vw,17px);line-height:1.45;color:#cdbfa9;margin-top:clamp(10px,1.4vw,15px);">Breathing life into a brand by adding the &ldquo;how&rdquo; and &ldquo;why&rdquo;</span>
+      </span>
+      <span style="font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f4ecde;white-space:nowrap;border-bottom:1.5px solid #e0703f;padding-bottom:6px;">Read the story &rarr;</span>
+    </span>
+  </a>
+
+  <!-- 06 VB -->
+  <a href="case-vb.html" class="ptile" style="position:relative;display:block;height:100vh;overflow:hidden;text-decoration:none;color:inherit;scroll-snap-align:start;border-top:1px solid rgba(241,233,219,.1);">
+    <img class="pcover" loading="lazy" decoding="async" src="assets/vb/building.jpg" alt="A Visionary Builders project" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 40%;transition:transform 1.1s cubic-bezier(.16,1,.3,1);">
+    <span style="position:absolute;inset:0;background:linear-gradient(to top, rgba(19,16,9,.9) 0%, rgba(19,16,9,.18) 48%, rgba(19,16,9,.04) 100%);pointer-events:none;"></span>
+    <span style="position:absolute;top:clamp(18px,2.6vw,32px);right:clamp(22px,4vw,52px);font-family:'Newsreader',serif;font-size:clamp(44px,7vw,104px);font-weight:300;color:rgba(244,236,222,.18);line-height:1;pointer-events:none;">06</span>
+    <span style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(28px,4vw,52px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;pointer-events:none;">
+      <span style="max-width:34ch;">
+        <span style="display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#e8915f;margin-bottom:clamp(12px,1.6vw,18px);">Rebrand / Social / Voice</span>
+        <span style="display:block;font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:clamp(32px,4.6vw,62px);line-height:1.0;letter-spacing:-.012em;color:#f6efe2;white-space:nowrap;">Visionary Builders</span>
+        <span style="display:block;font-size:clamp(14px,1.3vw,17px);line-height:1.45;color:#cdbfa9;margin-top:clamp(10px,1.4vw,15px);">A refresh that never lost the blue-collar soul</span>
+      </span>
+      <span style="font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f4ecde;white-space:nowrap;border-bottom:1.5px solid #e0703f;padding-bottom:6px;">Read the story &rarr;</span>
+    </span>
+  </a>
+
+  <!-- EXTRAS BRIDGE -->
+  <a href="extras.html" style="display:block;text-decoration:none;color:inherit;border-top:1px solid rgba(241,233,219,.14);scroll-snap-align:start;">
+    <span style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;max-width:1340px;margin:0 auto;padding:clamp(30px,4vw,48px) clamp(20px,4vw,56px);box-sizing:border-box;">
+      <span style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(20px,2.2vw,30px);color:#b6a890;">Similar work. Just unpaid.</span>
+      <span style="display:inline-flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#f4ecde;border-bottom:1.5px solid #e0703f;padding-bottom:6px;">See the passion projects <span style="color:#e0703f;">&rarr;</span></span>
+    </span>
+  </a>
+
+  <!-- ASK ME ABOUT -->
+  <section style="display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,40px);align-items:start;max-width:1340px;margin:0 auto;padding:clamp(34px,5vw,60px) clamp(20px,4vw,56px);border-top:1px solid rgba(241,233,219,.14);box-sizing:border-box;">
+    <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#e0703f;font-weight:600;padding-top:7px;white-space:nowrap;">Also made by me</span>
+    <p style="font-family:'Newsreader',serif;font-size:clamp(17px,1.5vw,23px);line-height:1.5;color:#9d9081;margin:0;max-width:74ch;">Not everything fits on one page. <span style="color:#f1e9db;">Ask me about</span> the trust building comms for a founder stepping away from the company that still carried his name, the nonprofit studio that helped deaf dancers feel music, my brother's coffee company named after our mom, and a few personal brands along the way.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid rgba(241,233,219,.16);scroll-snap-align:start;">
+    <div style="max-width:1340px;margin:0 auto;padding:clamp(56px,8vw,120px) clamp(20px,4vw,60px) clamp(40px,6vw,72px);">
+      <p style="font-family:'Newsreader',serif;font-weight:340;font-size:clamp(34px,5.8vw,88px);line-height:1.0;letter-spacing:-.03em;margin:0 0 clamp(34px,4.4vw,52px);max-width:16ch;color:#f6efe2;">Think of all the cool stuff we could <em style="font-style:italic;color:#e8915f;">accomplish together</em>.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;">
+        <a href="mailto:zacowen120@gmail.com" style="font-size:clamp(16px,1.5vw,20px);color:#f1e9db;text-decoration:none;border-bottom:1.5px solid #e0703f;padding-bottom:4px;">zacowen120@gmail.com</a>
+        <a href="https://zacowen.com/assets/Zac_Owen_Resume.pdf" class="resume-btn" style="display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#131009;text-decoration:none;background:#ece4d6;border-radius:100px;padding:13px 24px;">Download my résumé &darr;</a>
+        <a href="https://www.linkedin.com/in/zac-owen/" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9d9081;text-decoration:none;">LinkedIn</a>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:clamp(40px,6vw,72px);border-top:1px solid rgba(241,233,219,.12);padding-top:24px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a7e6c;">
+        <span>Zac Owen, Portfolio</span>
+        <span>Brand &middot; Social &middot; PR &middot; Web &middot; Design</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4d14ca84366549db8b22189ecf168612"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
